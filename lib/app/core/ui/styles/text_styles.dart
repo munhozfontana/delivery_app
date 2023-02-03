@@ -45,5 +45,5 @@ class TextStyles {
 }
 
 extension TextStylesExtension on BuildContext {
-  TextStyles get appStyles => TextStyles.i;
+  TextStyles get textStyles => TextStyles.i;
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../core/config/env/env.dart';
 import '../../core/ui/helpers/size_externsions.dart';
 import '../../core/ui/widgets/delivery_button.dart';
 
@@ -10,24 +9,41 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(''),
-      ),
-      body: Column(
-        children: [
-          Container(),
-          DeliveryButton(
-            label: Env.i['backend_base_url'] ?? '',
-            onPressed: () {},
-            width: 300,
-            height: 124,
-          ),
-          Text(MediaQuery.of(context).size.width.toString()),
-          Text(context.screenWidth.toString()),
-          TextFormField(
-            decoration: const InputDecoration(labelText: 'Text'),
-          )
-        ],
+      body: ColoredBox(
+        color: const Color(0xFF140E0E),
+        child: Stack(
+          children: [
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: SizedBox(
+                width: context.screenWidth,
+                child: Image.asset(
+                  'assets/images/lanche.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Center(
+              child: Column(
+                children: [
+                  SizedBox(height: context.percentHeight(.3)),
+                  Image.asset(
+                    'assets/images/logo.png',
+                    fit: BoxFit.cover,
+                  ),
+                  const SizedBox(height: 80),
+                  DeliveryButton(
+                    width: context.percentWidth(.6),
+                    label: 'ACESSAR',
+                    onPressed: () {
+                      Navigator.of(context).popAndPushNamed('/home');
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
