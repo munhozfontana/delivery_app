@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 
 import '../../dto/order_product_dto.dart';
-import '../../repositories/products_repository.dart';
+import '../../repositories/products/products_repository.dart';
 import 'home_state.dart';
 
 class HomeController extends Cubit<HomeState> {

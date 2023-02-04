@@ -4,6 +4,7 @@ import '../styles/colors_app.dart';
 import '../styles/text_styles.dart';
 
 class DeliveryIncrementDecrementButton extends StatelessWidget {
+  final bool _compat;
   final int amout;
   final VoidCallback incrementTab;
   final VoidCallback decrementTab;
@@ -13,11 +14,19 @@ class DeliveryIncrementDecrementButton extends StatelessWidget {
     required this.amout,
     required this.incrementTab,
     required this.decrementTab,
-  });
+  }) : _compat = false;
+
+  const DeliveryIncrementDecrementButton.compat({
+    super.key,
+    required this.amout,
+    required this.incrementTab,
+    required this.decrementTab,
+  }) : _compat = true;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: _compat ? const EdgeInsets.all(5) : null,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(7),
@@ -32,7 +41,7 @@ class DeliveryIncrementDecrementButton extends StatelessWidget {
               child: Text(
                 '-',
                 style: context.textStyles.textMedium
-                    .copyWith(fontSize: 22, color: Colors.grey),
+                    .copyWith(fontSize: _compat ? 10 : 22, color: Colors.grey),
               ),
             ),
           ),
@@ -41,7 +50,7 @@ class DeliveryIncrementDecrementButton extends StatelessWidget {
             child: Text(
               amout.toString(),
               style: context.textStyles.textRegular.copyWith(
-                fontSize: 17,
+                fontSize: _compat ? 13 : 17,
                 color: context.colors.second,
               ),
             ),
@@ -53,7 +62,7 @@ class DeliveryIncrementDecrementButton extends StatelessWidget {
               child: Text(
                 '+',
                 style: context.textStyles.textMedium
-                    .copyWith(fontSize: 22, color: Colors.grey),
+                    .copyWith(fontSize: _compat ? 10 : 22, color: Colors.grey),
               ),
             ),
           ),

@@ -2,9 +2,9 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 
-import '../core/exceptions/repository_exceptions.dart';
-import '../core/rest_client/custom_dio.dart';
-import '../models/product_model.dart';
+import '../../core/exceptions/repository_exceptions.dart';
+import '../../core/rest_client/custom_dio.dart';
+import '../../models/product_model.dart';
 import 'products_repository.dart';
 
 class ProductsRepositoryImpl implements ProductsRepository {

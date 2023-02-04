@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../core/rest_client/custom_dio.dart';
+import '../repositories/auth/auth_repository.dart';
+import '../repositories/auth/auth_repository_impl.dart';
 
 class ApplicationBinding extends StatelessWidget {
   final Widget? child;
@@ -14,7 +16,12 @@ class ApplicationBinding extends StatelessWidget {
       providers: [
         Provider(
           create: (context) => CustomDio(),
-        )
+        ),
+        Provider<AuthRepository>(
+          create: (context) => AuthRepositoryImpl(
+            dio: context.read(),
+          ),
+        ),
       ],
       child: child,
     );

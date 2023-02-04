@@ -19,8 +19,14 @@ class ShppingBagWidget extends StatelessWidget {
     final sp = await SharedPreferences.getInstance();
 
     if (!sp.containsKey('accessToken')) {
-      final loginResult = navigator.pushNamed('/auth/login');
+      final loginResult = await navigator.pushNamed('/auth/login');
+
+      if (loginResult == null || loginResult == false) {
+        return;
+      }
     }
+
+    await navigator.pushNamed('/order', arguments: bag);
   }
 
   @override
