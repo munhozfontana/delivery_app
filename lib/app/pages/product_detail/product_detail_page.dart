@@ -53,7 +53,15 @@ class _ProductDetailPageState
               ),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pop(
+                  OrderProductDto(
+                    productModel: widget.productModel,
+                    amount: amount,
+                  ),
+                );
+              },
               child: Text(
                 'Confirmar',
                 style: context.textStyles.textBold,

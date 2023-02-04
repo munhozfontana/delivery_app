@@ -18,7 +18,7 @@ class ShppingBagWidget extends StatelessWidget {
     final navigator = Navigator.of(context);
     final sp = await SharedPreferences.getInstance();
 
-    if (sp.containsKey('accessToken')) {
+    if (!sp.containsKey('accessToken')) {
       final loginResult = navigator.pushNamed('/auth/login');
     }
   }
