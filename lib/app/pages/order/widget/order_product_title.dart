@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/extensions/formatter_extensions.dart';
 import '../../../core/ui/styles/colors_app.dart';
 import '../../../core/ui/styles/text_styles.dart';
 import '../../../core/ui/widgets/delivery_increment_decrement_button.dart';
 import '../../../dto/order_product_dto.dart';
+import '../order_controller.dart';
 
 class OrderProductTitle extends StatelessWidget {
   final int index;
@@ -50,10 +52,18 @@ class OrderProductTitle extends StatelessWidget {
                           color: context.colors.second,
                         ),
                       ),
-                      DeliveryIncrementDecrementButton(
-                        amout: 1,
-                        incrementTab: () {},
-                        decrementTab: () {},
+                      DeliveryIncrementDecrementButton.compat(
+                        amout: orderProductDto.amount,
+                        incrementTab: () {
+                          context
+                              .read<OrderController>()
+                              .incrementProduct(index);
+                        },
+                        decrementTab: () {
+                          context
+                              .read<OrderController>()
+                              .decrementProduct(index);
+                        },
                       )
                     ],
                   )

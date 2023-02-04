@@ -5,7 +5,6 @@ mixin Loader<T extends StatefulWidget> on State<T> {
   var isOpen = false;
 
   showLodaer() {
-    print('SHOWLOADING');
     if (!isOpen) {
       isOpen = true;
       showDialog(

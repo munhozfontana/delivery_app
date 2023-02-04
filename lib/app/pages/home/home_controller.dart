@@ -16,7 +16,6 @@ class HomeController extends Cubit<HomeState> {
   Future<void> loadingProducts() async {
     emit(state.copyWith(status: HomeStateStatus.loading));
     try {
-      await Future.delayed(const Duration(seconds: 2));
       final products = await _productsRepository.findAll();
       emit(state.copyWith(status: HomeStateStatus.loaded, products: products));
     } catch (e, s) {
@@ -46,5 +45,9 @@ class HomeController extends Cubit<HomeState> {
     }
 
     emit(state.copyWith(shoppingBag: shoppingBag));
+  }
+
+  void updateBag(List<OrderProductDto> updateBag) {
+    emit(state.copyWith(shoppingBag: updateBag));
   }
 }

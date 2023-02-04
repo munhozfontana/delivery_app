@@ -48,6 +48,7 @@ class OrderField extends StatelessWidget {
               focusedBorder: defauldBorder,
             ),
             controller: controller,
+            validator: validator,
           ),
         ],
       ),
